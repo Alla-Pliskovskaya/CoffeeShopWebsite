@@ -11,11 +11,9 @@ public class CoffeeDrink {
     @Id
     @GeneratedValue
     private Long id;
-
     private String coffeeName;
     private Double coffeePrice;
     private String volume;
-
 
     public CoffeeDrink(String coffeeName, double coffeePrice, String volume) {
         this.coffeeName = coffeeName;

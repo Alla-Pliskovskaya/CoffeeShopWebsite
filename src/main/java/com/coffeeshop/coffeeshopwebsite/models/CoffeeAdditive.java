@@ -11,10 +11,8 @@ public class CoffeeAdditive {
     @Id
     @GeneratedValue
     private Long id;
-
     private String additiveName;
     private double additivePrice;
-
 
     public CoffeeAdditive(String additiveName, double additivePrice) {
         this.additiveName = additiveName;
@@ -24,7 +22,6 @@ public class CoffeeAdditive {
     public CoffeeAdditive() {
 
     }
-
 
     public String getAdditiveName() {
         return additiveName;

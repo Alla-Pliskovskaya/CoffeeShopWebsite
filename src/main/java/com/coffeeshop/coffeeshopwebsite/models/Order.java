@@ -12,7 +12,6 @@ public class Order {
     @Id
     @GeneratedValue
     private Long id;
-
     private String login, coffee, additive, bakery;
     private Calendar dateTime;
 
@@ -27,7 +26,6 @@ public class Order {
     public Order() {
 
     }
-
 
     public String getLogin() {
         return login;

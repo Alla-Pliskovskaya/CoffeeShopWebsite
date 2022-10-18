@@ -11,7 +11,6 @@ public class Bakery {
     @Id
     @GeneratedValue
     private Long id;
-
     private String bakeryName;
     private double bakeryPrice;
     private double calories;

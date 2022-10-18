@@ -11,7 +11,6 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-
     private String login;
     private String password;
     private String fullName;
@@ -25,7 +24,6 @@ public class User {
     public User() {
 
     }
-
 
     public Long getId() {
         return id;
