@@ -1,0 +1,79 @@
+@media screen and (orientation: landscape) {
+    article.body {
+        background-color: white;
+        min-height: 100vh
+    }
+
+    div.header {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        height: 20%;
+    }
+
+    p.name {
+        font-family: 'Bona Nova', serif;
+        font-style: normal;
+        font-size: 56px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #65412C;
+    }
+
+    div.info {
+        font-family: 'Nova Cut', serif;
+        font-style: normal;
+        font-size: 25px;
+        letter-spacing: 0.2em;
+        color: #000000;
+    }
+
+    div.authorization {
+        flex-direction: column;
+        background: #43707E;
+        align-items: center;
+        height: max-content;
+        display: flex;
+    }
+
+    .button {
+        padding: 20px 30px;
+        margin: 10px 20px;
+        border-radius: 23px;
+        font-family: 'Bona Nova', serif;
+        font-style: normal;
+        font-size: 25px;
+        background: #FFFFFF;
+        width: 50%;
+        height: 30%;
+        line-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a.authorization-text {
+        vertical-align: middle;
+        text-align: center;
+        font-size: 25px;
+        font-family: 'Bona Nova', serif;
+        font-style: normal;
+        line-height: 22px;
+        letter-spacing: 0.1em;
+
+        color: #000000;
+    }
+
+    .description {
+        font-family: 'Bona Nova', serif;
+        font-style: normal;
+        font-size: 25px;
+        padding: 20px 30px;
+        margin: 10px 20px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+}

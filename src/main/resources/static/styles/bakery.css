@@ -1,0 +1,18 @@
+@media screen and (orientation: landscape) {
+    .image-bakery {
+        height: 20%;
+        width: 40%;
+    }
+
+    div.bakery {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: bisque;
+    }
+
+    .table-striped {
+        margin-left: 20px;
+        width: 100%;
+    }
+}
