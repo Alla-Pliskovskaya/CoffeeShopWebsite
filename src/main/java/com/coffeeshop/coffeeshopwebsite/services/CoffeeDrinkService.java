@@ -8,18 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CoffeeDrinkService
-{
+public class CoffeeDrinkService {
     private final CoffeeDrinkRepository coffeeDrinkRepository;
 
     @Autowired
-    public CoffeeDrinkService(CoffeeDrinkRepository coffeeDrinkRepository)
-    {
+    public CoffeeDrinkService(CoffeeDrinkRepository coffeeDrinkRepository) {
         this.coffeeDrinkRepository = coffeeDrinkRepository;
     }
 
-    public List<CoffeeDrink> getDrinks()
-    {
+    public List<CoffeeDrink> getDrinks() {
         List<CoffeeDrink> result = new ArrayList<>();
         coffeeDrinkRepository.findAll().forEach(result::add);
         return result;

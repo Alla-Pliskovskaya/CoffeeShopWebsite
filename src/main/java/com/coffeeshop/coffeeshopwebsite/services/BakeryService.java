@@ -9,18 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BakeryService
-{
+public class BakeryService {
     private final BakeryRepository bakeryRepository;
 
     @Autowired
-    public BakeryService(BakeryRepository bakeryRepository)
-    {
+    public BakeryService(BakeryRepository bakeryRepository) {
         this.bakeryRepository = bakeryRepository;
     }
 
-    public List<Bakery> getBakery()
-    {
+    public List<Bakery> getBakery() {
         List<Bakery> result = new ArrayList<>();
         bakeryRepository.findAll().forEach(result::add);
         return result;

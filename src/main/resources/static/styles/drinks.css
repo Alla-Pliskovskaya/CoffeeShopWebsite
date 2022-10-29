@@ -1,0 +1,35 @@
+@media screen and (orientation: landscape) {
+    .image-drinks {
+        height: 50%;
+        width: 50%;
+    }
+
+    div.drinks {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: lightblue;
+    }
+
+    .table-striped {
+        margin-left: 20px;
+        width: 100%;
+    }
+
+    .image-additives {
+        height: 50%;
+        width: 50%;
+    }
+
+    div.additives {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: lightpink;
+    }
+
+    .additives-table {
+        margin-left: 20px;
+        width: 100%;
+    }
+}

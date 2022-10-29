@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <link th:href="@{/styles/menu.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<article class="body">
+    <div class="header">
+        <p class="name">
+            Меню 📝
+        </p>
+    </div>
+    <div class="authorization">
+        <button class="authorization button">
+            <a class="authorization-text" href="/menu/drinks">Кофе и напитки</a>
+        </button>
+        <button class="authorization button">
+            <a class="authorization-text" href="/menu/bakery">Выпечка</a>
+        </button>
+    </div>
+    <img class="image-menu" th:src="@{/images/menu.jpg}" alt="menu" src="">
+</article>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
