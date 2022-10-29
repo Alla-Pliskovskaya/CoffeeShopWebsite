@@ -1,18 +1,18 @@
 package com.coffeeshop.coffeeshopwebsite.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "cafe_users")
 public class User {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(name = "login", length = 36, nullable = false, unique = true)
     private String login;
+    @Column(name = "password", length = 128, nullable = false)
     private String password;
+    @Column(name = "full_name")
     private String fullName;
 
     public User(String login, String password, String fullName) {
@@ -39,5 +39,21 @@ public class User {
 
     public String getFullName() {
         return fullName;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }

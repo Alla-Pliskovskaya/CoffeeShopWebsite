@@ -1,18 +1,18 @@
 package com.coffeeshop.coffeeshopwebsite.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "Bakery")
+@Table(name = "bakery")
 public class Bakery {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(name = "bakery_name", length = 100, nullable = false)
     private String bakeryName;
+    @Column(name = "bakery_price", nullable = false)
     private double bakeryPrice;
+    @Column(name = "calories")
     private double calories;
 
     public Bakery(String bakeryName, double bakeryPrice, double calories) {
@@ -40,4 +40,21 @@ public class Bakery {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setBakeryName(String bakeryName) {
+        this.bakeryName = bakeryName;
+    }
+
+    public void setBakeryPrice(double bakeryPrice) {
+        this.bakeryPrice = bakeryPrice;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
 }

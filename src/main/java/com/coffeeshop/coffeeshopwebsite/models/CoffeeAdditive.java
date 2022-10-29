@@ -1,17 +1,16 @@
 package com.coffeeshop.coffeeshopwebsite.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "CoffeeAdditive")
+@Table(name = "coffee_additive")
 public class CoffeeAdditive {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(name = "additive_name", length = 100, nullable = false)
     private String additiveName;
+    @Column(name = "additive_price", nullable = false)
     private double additivePrice;
 
     public CoffeeAdditive(String additiveName, double additivePrice) {
@@ -33,5 +32,17 @@ public class CoffeeAdditive {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAdditiveName(String additiveName) {
+        this.additiveName = additiveName;
+    }
+
+    public void setAdditivePrice(double additivePrice) {
+        this.additivePrice = additivePrice;
     }
 }
