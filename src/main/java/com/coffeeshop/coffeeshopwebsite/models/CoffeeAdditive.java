@@ -1,10 +1,11 @@
 package com.coffeeshop.coffeeshopwebsite.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "coffee_additive")
-public class CoffeeAdditive {
+public class CoffeeAdditive implements Serializable {
     @Id
     @GeneratedValue
     private Long id;

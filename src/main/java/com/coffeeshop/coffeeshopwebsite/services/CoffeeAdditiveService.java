@@ -1,6 +1,7 @@
 package com.coffeeshop.coffeeshopwebsite.services;
 
 import com.coffeeshop.coffeeshopwebsite.models.CoffeeAdditive;
+import com.coffeeshop.coffeeshopwebsite.models.CoffeeDrink;
 import com.coffeeshop.coffeeshopwebsite.repositories.CoffeeAdditiveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,5 +22,9 @@ public class CoffeeAdditiveService {
         List<CoffeeAdditive> result = new ArrayList<>();
         coffeeAdditiveRepository.findAll().forEach(result::add);
         return result;
+    }
+
+    public CoffeeAdditive findByAdditiveName(String additiveName) {
+        return coffeeAdditiveRepository.findByAdditiveName(additiveName);
     }
 }

@@ -5,7 +5,6 @@ import com.coffeeshop.coffeeshopwebsite.models.User;
 import com.coffeeshop.coffeeshopwebsite.repositories.RoleRepository;
 import com.coffeeshop.coffeeshopwebsite.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,25 +45,23 @@ public class UserService implements UserDetailsService
         return user;
     }
 
-    public User findUserById(Long userId) {
-        Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElse(new User());
+    public User findUserByName(String username) {
+        return userRepository.findByUsername(username);
     }
 
     public List<User> allUsers() {
         return (List<User>) userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
+    public void saveUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
 
         if (userFromDB != null) {
-            return false;
+            return;
         }
 
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(getPasswordEncoder().encode(user.getPassword()));
         userRepository.save(user);
-        return true;
     }
 }

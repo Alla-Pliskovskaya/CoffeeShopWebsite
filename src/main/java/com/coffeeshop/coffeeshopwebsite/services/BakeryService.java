@@ -1,6 +1,7 @@
 package com.coffeeshop.coffeeshopwebsite.services;
 
 import com.coffeeshop.coffeeshopwebsite.models.Bakery;
+import com.coffeeshop.coffeeshopwebsite.models.CoffeeAdditive;
 import com.coffeeshop.coffeeshopwebsite.repositories.BakeryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,5 +22,9 @@ public class BakeryService {
         List<Bakery> result = new ArrayList<>();
         bakeryRepository.findAll().forEach(result::add);
         return result;
+    }
+
+    public Bakery findByBakeryName(String bakeryName) {
+        return bakeryRepository.findByBakeryName(bakeryName);
     }
 }

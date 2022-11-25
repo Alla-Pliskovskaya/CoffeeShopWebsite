@@ -1,11 +1,13 @@
 package com.coffeeshop.coffeeshopwebsite.services;
 
 import com.coffeeshop.coffeeshopwebsite.models.CoffeeDrink;
+import com.coffeeshop.coffeeshopwebsite.models.User;
 import com.coffeeshop.coffeeshopwebsite.repositories.CoffeeDrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CoffeeDrinkService {
@@ -20,5 +22,9 @@ public class CoffeeDrinkService {
         List<CoffeeDrink> result = new ArrayList<>();
         coffeeDrinkRepository.findAll().forEach(result::add);
         return result;
+    }
+
+    public CoffeeDrink findCoffeeByName(String coffeeName) {
+        return coffeeDrinkRepository.findByCoffeeName(coffeeName);
     }
 }

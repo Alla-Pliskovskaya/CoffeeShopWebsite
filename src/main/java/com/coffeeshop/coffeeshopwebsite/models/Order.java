@@ -1,5 +1,8 @@
 package com.coffeeshop.coffeeshopwebsite.models;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,16 +26,24 @@ public class Order {
     @Column(name = "date_time", nullable = false)
     private String dateTime;
 
+    @Column(name = "coffee_volume", length = 50)
+    private String volume;
+
     public Order() {
 
     }
 
-    public Order(CoffeeDrink coffeeDrink, CoffeeAdditive coffeeAdditive, Bakery bakery, User user, String dateTime) {
+    public Authentication getCurrentUser() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
+
+    public Order(CoffeeDrink coffeeDrink, String volume, CoffeeAdditive coffeeAdditive, Bakery bakery, String dateTime) {
         this.coffeeDrink = coffeeDrink;
+        this.volume = volume;
         this.coffeeAdditive = coffeeAdditive;
         this.bakery = bakery;
-        this.user = user;
         this.dateTime = dateTime;
+        user = (User) getCurrentUser().getPrincipal();
     }
 
     public Long getId() {
@@ -81,5 +92,13 @@ public class Order {
 
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
     }
 }
