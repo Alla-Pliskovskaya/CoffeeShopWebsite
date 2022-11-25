@@ -8,7 +8,7 @@ public class CoffeeAdditive {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name = "additive_name", length = 100, nullable = false)
+    @Column(name = "additive_name", length = 100, unique = true, nullable = false)
     private String additiveName;
     @Column(name = "additive_price", nullable = false)
     private double additivePrice;
