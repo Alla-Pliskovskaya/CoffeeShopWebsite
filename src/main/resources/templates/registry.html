@@ -10,7 +10,7 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <h1>Регистрация</h1>
-    <form action="/registry" method="post">
+    <form th:action="@{/registry}" method="post">
         <div id="loginHelp" class="form-text">Логин должен быть уникальным.</div>
         <label>
             <input type="text" name="login" placeholder="Введите логин" class="form-control">

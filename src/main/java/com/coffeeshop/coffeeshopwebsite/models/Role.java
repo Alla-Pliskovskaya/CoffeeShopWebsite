@@ -50,4 +50,12 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return getRoleName();
     }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
