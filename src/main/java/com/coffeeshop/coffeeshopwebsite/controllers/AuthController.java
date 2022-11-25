@@ -8,17 +8,17 @@ public class AuthController
 {
     @GetMapping("/admin")
     public String admin() {
-        return "/admin";
+        return "admin";
     }
 
     @GetMapping("/user")
     public String user() {
-        return "/user";
+        return "user";
     }
 
     @GetMapping("/403")
     public String error403() {
-        return "/error/403";
+        return "error/403";
     }
 
 }
