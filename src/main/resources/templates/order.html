@@ -12,9 +12,6 @@
     <h1>Сделать заказ</h1>
     <form th:action="@{/user/order}" method="post">
         <label>
-            <input type="text" name="username" placeholder="Ваш логин" class="form-control">
-        </label><br>
-        <label>
             <select name="coffeeName" class="form-control">
                 <option value="">Выберите напиток</option>
                 <option th:each="coffee : ${coffees}" th:value="${coffee.getCoffeeName()}"

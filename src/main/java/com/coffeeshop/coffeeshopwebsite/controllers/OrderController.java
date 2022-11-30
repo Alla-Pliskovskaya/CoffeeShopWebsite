@@ -5,9 +5,7 @@ import com.coffeeshop.coffeeshopwebsite.repositories.OrderRepository;
 import com.coffeeshop.coffeeshopwebsite.services.BakeryService;
 import com.coffeeshop.coffeeshopwebsite.services.CoffeeAdditiveService;
 import com.coffeeshop.coffeeshopwebsite.services.CoffeeDrinkService;
-import com.coffeeshop.coffeeshopwebsite.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,24 +22,20 @@ public class OrderController {
     private final BakeryService bakeryService;
     private final CoffeeAdditiveService coffeeAdditiveService;
     private final CoffeeDrinkService coffeeDrinkService;
-    private final UserService userService;
     private final OrderRepository orderRepository;
 
     @Autowired
-    public  OrderController(BakeryService bakeryService, CoffeeDrinkService coffeeDrinkService,
-                            CoffeeAdditiveService coffeeAdditiveService, UserService userService,
-                            OrderRepository orderRepository)
-    {
+    public OrderController(BakeryService bakeryService, CoffeeDrinkService coffeeDrinkService,
+                           CoffeeAdditiveService coffeeAdditiveService,
+                           OrderRepository orderRepository) {
         this.bakeryService = bakeryService;
         this.coffeeAdditiveService = coffeeAdditiveService;
         this.coffeeDrinkService = coffeeDrinkService;
-        this.userService = userService;
         this.orderRepository = orderRepository;
     }
 
     @GetMapping("/user/order")
-    public String order(Model model)
-    {
+    public String order(Model model) {
         Iterable<CoffeeDrink> coffees = coffeeDrinkService.getDrinks();
         Iterable<CoffeeAdditive> additives = coffeeAdditiveService.getAdditives();
         Iterable<Bakery> bakeries = bakeryService.getBakery();
@@ -54,9 +48,8 @@ public class OrderController {
     }
 
     @PostMapping("/user/order")
-    public String doOrder(@RequestParam String username, @RequestParam String coffeeName, @RequestParam String volume,
-                          @RequestParam String additiveName, @RequestParam String bakeryName, Model model)
-    {
+    public String doOrder(@RequestParam String coffeeName, @RequestParam String volume,
+                          @RequestParam String additiveName, @RequestParam String bakeryName, Model model) {
         Date date_time = new Date();
         CoffeeDrink coffeeDrink = coffeeDrinkService.findCoffeeByName(coffeeName);
         CoffeeAdditive coffeeAdditive = coffeeAdditiveService.findByAdditiveName(additiveName);
@@ -69,8 +62,7 @@ public class OrderController {
     }
 
     @GetMapping("/user/myOrders")
-    public String getMyOrders(Model model)
-    {
+    public String getMyOrders(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Iterable<Order> myOrders = user.getOrders();
         model.addAttribute("myOrders", myOrders);
