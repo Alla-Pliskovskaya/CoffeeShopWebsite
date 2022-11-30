@@ -1,7 +1,7 @@
 @media screen and (orientation: landscape) {
     article.body {
         background-color: white;
-        min-height: 100vh
+        min-height: 100vh;
     }
 
     div.header {
@@ -20,7 +20,7 @@
         align-items: center;
         text-align: center;
 
-        color: #65412C;
+        color: #65412c;
     }
 
     div.info {

@@ -1,14 +1,15 @@
 package com.coffeeshop.coffeeshopwebsite.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "bakery")
-public class Bakery {
+public class Bakery implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name = "bakery_name", length = 100, nullable = false)
+    @Column(name = "bakery_name", length = 100, unique = true, nullable = false)
     private String bakeryName;
     @Column(name = "bakery_price", nullable = false)
     private double bakeryPrice;
