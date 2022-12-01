@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Objects;
+
 @Controller
 public class RegistryController {
     private final UserService userService;
@@ -24,9 +26,21 @@ public class RegistryController {
     }
 
     @PostMapping("/registry")
-    public String doRegistry(@RequestParam String login, @RequestParam String password, @RequestParam String full_name, Model model) {
-        User user = new User(login, password, full_name);
-        userService.saveUser(user);
-        return "redirect:/";
+    public String doRegistry(@RequestParam String username, @RequestParam String password, @RequestParam String passwordConfirm, @RequestParam String full_name, Model model) {
+        try {
+            if (Objects.equals(password, passwordConfirm)) {
+                User user = new User(username, password, full_name);
+                userService.saveUser(user);
+                return "redirect:/";
+            }
+            else {
+                model.addAttribute("message", "Passwords don't match!");
+                return "redirect:/login";
+            }
+        }
+        catch (Exception e){
+            model.addAttribute("message", "User exists");
+            return "registry";
+        }
     }
 }

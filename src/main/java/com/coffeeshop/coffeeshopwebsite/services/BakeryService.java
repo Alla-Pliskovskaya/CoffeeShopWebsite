@@ -1,11 +1,9 @@
 package com.coffeeshop.coffeeshopwebsite.services;
 
 import com.coffeeshop.coffeeshopwebsite.models.Bakery;
-import com.coffeeshop.coffeeshopwebsite.models.CoffeeAdditive;
 import com.coffeeshop.coffeeshopwebsite.repositories.BakeryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 

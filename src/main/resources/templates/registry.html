@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="ru">
 <head>
     <title>Регистрация</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,25 +9,26 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <h1>Регистрация</h1>
+    <p>Пожалуйста, заполните эту форму, чтобы зарегистрироваться.</p>
+    <hr>
     <form th:action="@{/registry}" method="post">
-        <div id="loginHelp" class="form-text">Логин должен быть уникальным.</div>
-        <label>
-            <input type="text" name="login" placeholder="Введите логин" class="form-control">
-        </label><br>
-        <div id="passwordHelpBlock" class="form-text">
-            Ваш пароль должен состоять из 8-20 символов, содержать буквы и цифры и не должен содержать пробелов,
-            специальных символов или эмодзи.
-        </div>
-        <label>
-            <input type="password" name="password" placeholder="Введите пароль" class="form-control">
-        </label><br>
-        <label>
-            <input type="password" name="password_confirmation" placeholder="Повторите введенный пароль"
-                   class="form-control">
-        </label><br>
-        <label>
-            <input type="text" name="full_name" placeholder="Введите имя и фамилию" class="form-control">
-        </label><br>
+        <div><label for="username"><b>Имя пользователя (логин)</b>
+            <input type="text" name="username" placeholder="Введите логин" class="form-control" required><br>
+        </label></div>
+
+        <div><label for="password"><b>Пароль</b>
+            <input type="password" name="password" placeholder="Введите пароль" class="form-control" required><br>
+        </label></div>
+
+        <div><label for="passwordConfirm"><b>Подтверждение пароля</b>
+            <input type="password" name="passwordConfirm" placeholder="Повторите пароль" class="form-control"
+                   required><br>
+        </label></div>
+
+        <div><label for="full_name"><b>Имя и фамилия</b>
+            <input type="text" name="full_name" placeholder="Введите имя и фамилию" class="form-control"><br>
+        </label></div>
+
         <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
     </form>
 </div>

@@ -2,7 +2,6 @@ package com.coffeeshop.coffeeshopwebsite.services;
 
 import com.coffeeshop.coffeeshopwebsite.models.Role;
 import com.coffeeshop.coffeeshopwebsite.models.User;
-import com.coffeeshop.coffeeshopwebsite.repositories.RoleRepository;
 import com.coffeeshop.coffeeshopwebsite.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,25 +11,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-@Service
+@Component
 public class UserService implements UserDetailsService {
-    @PersistenceContext
-    private EntityManager em;
-
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
 
     @Autowired
-    public UserService (UserRepository userRepository, RoleRepository roleRepository)
+    public UserService (UserRepository userRepository)
     {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
     @Autowired
@@ -40,40 +37,15 @@ public class UserService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
-        User appUser = userRepository.findByUsername(userName);
-
-        if (appUser == null) {
-            System.out.println("User not found! " + userName);
-            throw new UsernameNotFoundException("User " + userName + " was not found in the database!");
-        }
-
-        System.out.println("Found User: " + appUser);
-
-        // [ROLE_USER, ROLE_ADMIN,..]
-        Set<Role> roleNames = appUser.getRoles();
-
-        List<GrantedAuthority> grantList = new ArrayList<>();
-        if (roleNames != null) {
-            for (Role role : roleNames) {
-                // ROLE_USER, ROLE_ADMIN,..
-                GrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
-                grantList.add(authority);
-            }
-        }
-
-        return appUser;
-    }
-/*    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return user;
-    }*/
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                mapRolesToAuthorities(user.getRoles()));
+    }
+    private List<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles) {
+        return roles.stream().map(r -> new SimpleGrantedAuthority("ROLE_" + r.name())).collect(Collectors.toList());
+    }
 
     public User findUserById(Long userId) {
         Optional<User> userFromDb = userRepository.findById(userId);
@@ -92,15 +64,14 @@ public class UserService implements UserDetailsService {
         return userRepository.findUsersByLogin(username);
     }
 
-
     public void saveUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
 
         if (userFromDB != null) {
-            return;
+            throw new IllegalArgumentException("User exists!");
         }
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        user.setRoles(Collections.singleton(Role.USER));
         user.setPassword(getPasswordEncoder().encode(user.getPassword()));
         userRepository.save(user);
     }
