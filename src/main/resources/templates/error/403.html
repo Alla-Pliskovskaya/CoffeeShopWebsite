@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="ru">
 <head>
     <title>Отказано в доступе</title>
     <meta http-equiv="refresh" content="3;/user">
 </head>
 <body>
-<h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
-<div th:if="${user != null}" th:utext="${user}"></div>
+<h1 style="color: red;">Sorry, you don't have sufficient permission to visit this page!</h1>
 </body>
 </html>

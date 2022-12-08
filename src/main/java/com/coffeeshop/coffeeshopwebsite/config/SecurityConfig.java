@@ -1,5 +1,6 @@
 package com.coffeeshop.coffeeshopwebsite.config;
 
+import com.coffeeshop.coffeeshopwebsite.controllers.CustomAccessDeniedHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -37,6 +39,15 @@ public class SecurityConfig
                 .logout()
                 .permitAll()
                 .logoutSuccessUrl("/");
+
+        http
+                .exceptionHandling()
+                .accessDeniedPage("/403");
         return http.build();
+    }
+
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
     }
 }
