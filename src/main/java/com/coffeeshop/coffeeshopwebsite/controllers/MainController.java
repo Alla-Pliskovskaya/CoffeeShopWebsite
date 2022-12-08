@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String getMainPage(Model model) {
-        model.addAttribute("title", "Coffee Shop");
+        model.addAttribute("title", "Home page: Coffee Shop");
         return "main";
+    }
+
+    @GetMapping("/403")
+    public String error403() {
+        return "error/403";
     }
 }

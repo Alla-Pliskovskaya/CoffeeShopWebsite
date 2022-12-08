@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="ru">
 <head>
     <title>Сделать заказ</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -11,34 +10,46 @@
 <div class="container mt-5 mb-5">
     <h1>Сделать заказ</h1>
     <form th:action="@{/user/order}" method="post">
-        <label>
-            <select name="coffeeName" class="form-control">
-                <option value="">Выберите напиток</option>
-                <option th:each="coffee : ${coffees}" th:value="${coffee.getCoffeeName()}"
-                        th:text="${coffee.getCoffeeName()}"></option>
-            </select>
-        </label><br>
-        <label>
-            <select name="volume" class="form-control">
-                <option value="">Выберите объем стаканчика</option>
-                <option th:each="volume : ${volumes}" th:value="${volume}"
-                        th:text="${volume}"></option>
-            </select>
-        </label><br>
-        <label>
-            <select name="additiveName" class="form-control">
-                <option value="">Выберите добавку к напитку</option>
-                <option th:each="add : ${additives}" th:value="${add.getAdditiveName()}"
-                        th:text="${add.getAdditiveName()}"></option>
-            </select>
-        </label><br>
-        <label>
-            <select name="bakeryName" class="form-control">
-                <option value="">Выберите выпечку</option>
-                <option th:each="bakery : ${bakeries}" th:value="${bakery.getBakeryName()}"
-                        th:text="${bakery.getBakeryName()}"></option>
-            </select>
-        </label><br>
+        <div>
+            <label>
+                <select name="coffeeName" class="form-control">
+                    <option value="">Выберите напиток</option>
+                    <option th:each="coffee : ${coffees}" th:value="${coffee.getCoffeeName()}"
+                            th:text="${coffee.getCoffeeName()}"></option>
+                </select>
+            </label><br>
+        </div>
+        <br>
+        <div>
+            <label>
+                <select name="volume" class="form-control">
+                    <option value="">Выберите объем стаканчика</option>
+                    <option th:each="volume : ${volumes}" th:value="${volume}"
+                            th:text="${volume}"></option>
+                </select>
+            </label><br>
+        </div>
+        <br>
+        <div>
+            <label>
+                <select name="additiveName" class="form-control">
+                    <option value="">Выберите добавку к напитку</option>
+                    <option th:each="add : ${additives}" th:value="${add.getAdditiveName()}"
+                            th:text="${add.getAdditiveName()}"></option>
+                </select>
+            </label>
+        </div>
+        <br>
+        <div>
+            <label>
+                <select name="bakeryName" class="form-control">
+                    <option value="">Выберите выпечку</option>
+                    <option th:each="bakery : ${bakeries}" th:value="${bakery.getBakeryName()}"
+                            th:text="${bakery.getBakeryName()}"></option>
+                </select>
+            </label>
+        </div>
+        <br>
         <button type="submit" class="btn btn-primary">Заказать</button>
     </form>
 </div>

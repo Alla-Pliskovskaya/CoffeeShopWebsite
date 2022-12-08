@@ -26,10 +26,14 @@
             <tr th:each="order : ${orders}" class="alert alert-info mt2">
                 <td th:text="${order.getId()}"></td>
                 <td th:text="${order.getUser().getUsername()}"></td>
-                <td th:text="${order.getCoffeeDrink().getCoffeeName()}"></td>
-                <td th:text="${order.getVolume()}"></td>
-                <td th:text="${order.getCoffeeAdditive().getAdditiveName()}"></td>
-                <td th:text="${order.getBakery().getBakeryName()}"></td>
+                <td th:if="${order.getCoffeeDrink() != null}" th:text="${order.getCoffeeDrink().getCoffeeName()}"></td>
+                <td th:unless="${order.getCoffeeDrink() != null}">Не выбрано</td>
+                <td th:if="${order.getVolume() != null}" th:text="${order.getVolume()}"></td>
+                <td th:unless="${order.getVolume() != null}">Не выбрано</td>
+                <td th:if="${order.getCoffeeAdditive() != null}" th:text="${order.getCoffeeAdditive().getAdditiveName()}"></td>
+                <td th:unless="${order.getCoffeeAdditive() != null}">Не выбрано</td>
+                <td th:if="${order.getBakery() != null}" th:text="${order.getBakery().getBakeryName()}"></td>
+                <td th:unless="${order.getBakery() != null}">Не выбрано</td>
                 <td th:text="${order.getDateTime()}"></td>
             </tr>
             </tbody>

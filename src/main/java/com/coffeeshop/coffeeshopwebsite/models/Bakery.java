@@ -57,5 +57,4 @@ public class Bakery implements Serializable {
     public void setCalories(double calories) {
         this.calories = calories;
     }
-
 }

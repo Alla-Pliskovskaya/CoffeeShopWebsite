@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="ru">
 <head>
     <title>Вход</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -17,9 +16,9 @@
     </div>
     <h1>Вход</h1>
     <form th:action="@{/login}" method="post">
-        <div><label> Имя пользователя (логин): <input type="text" class="form-control" name="username"/> </label></div>
+        <div><label> Имя пользователя (логин): <input type="text" class="form-control" name="username"/></label></div>
         <br>
-        <div><label> Пароль: <input type="password" class="form-control" name="password"/> </label></div>
+        <div><label> Пароль: <input type="password" class="form-control" name="password"/></label></div>
         <br>
         <div><input type="submit" class="btn btn-success" value="Войти"/></div>
         <br>
